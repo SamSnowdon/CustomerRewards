@@ -1,6 +1,6 @@
 # Spring Boot "Customer Rewards" WebAPI Development
 
-    This is a sample Java / Maven / Spring Boot application thats goal is to find the amount of rewards customers have form their total purchases.
+This is a sample Java / Maven / Spring Boot application thats goal is to find the amount of rewards customers have form their total purchases.
   
 # About the Service
 
@@ -12,17 +12,17 @@ All methods in the service include:
 -addCustomer(String id) adds a customer based on the passed in id that can later be modified through a PATCH endpoint.
 -deleteCustomer(String id) delets a customer based on the id provided.
 
-This Service also includes 2 POJOs as well as a AddRewardsRequeust.
+This Service also includes 2 POJOs as well as a AddRewardsRequeust that has validation that no fields are null and the month is valid.
 
 ###### Rewards
-This includes a concurrent HashMap to apply some thread safety and the following methods 
+This includes a concurrent HashMap to apply some thread safety, and the following methods 
 -getTotalRewards() a simple stream to calculate the sum of the monthly rewards and return them.
 -getRewardsByDate(String key) that returns the value of the monthlyRewards Map based on the passed in Key
 -addRewards(String month, Integer year, Integer rewards) add the rewards to our monthlyRewards HashMap with the passed in year, month, and rewards.
 
 ###### Customer
 Simple POJO that has three fields. A String id, and a Rewards object.
--getTotalRewards() returns the total amount of rewards necesarry and uses @JsonProperty to let Jackson know to map the JSON property name to the annotated Java field's name.
+-getTotalRewards() returns the total amount of rewards necesarry and uses @JsonProperty to let Jackson know to map the JSON property name to the result of the Java method.
 
 # CustomerController/Endpoints
 There are five endpoints inside of the Customer Controller which when necessary test simple edge cases and have logging so that we can understand what went wrong and where. 
